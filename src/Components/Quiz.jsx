@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import CelebrationConfetti from './CelebrationConfetti'
 import Options from "./Options";
+import data from "../api";
 
 const QuizApp = () => {
 const [questions, setQuestions] = useState([])
@@ -17,8 +18,21 @@ const [selectedOption, setSelectedOption] = useState(null)
 
 
 useEffect(() => {
-fetch("https://api.jsonserve.com/Uw5CrX")
-    .then((response) => response.json())
+// fetch("https://api.jsonserve.com/Uw5CrX")
+//     .then((response) => response.json())
+
+//     .then((res) => {
+//     setLoading(false);
+
+//     setQuestions(res.questions);
+//     })
+//     .catch((err) => {
+//     setError(err.message);
+
+//     setLoading(false);
+//     });
+
+    data.then((response) => response)
 
     .then((res) => {
     setLoading(false);
@@ -27,6 +41,7 @@ fetch("https://api.jsonserve.com/Uw5CrX")
     })
     .catch((err) => {
     setError(err.message);
+
     setLoading(false);
     });
 }, [quizStarted])
@@ -61,6 +76,8 @@ const handleRestart = () => {
     setScore(0);
     setFeedback(null);
     setSelectedOption(null);
+    // refresh page
+    window.location.reload();
     }
 
 return (
