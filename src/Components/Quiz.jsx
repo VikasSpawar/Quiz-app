@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-
-import CelebrationConfetti from "./celebrationConfetti";
+import CelebrationConfetti from './CelebrationConfetti'
 import Options from "./Options";
 
 const QuizApp = () => {
@@ -18,7 +17,7 @@ const [selectedOption, setSelectedOption] = useState(null)
 
 
 useEffect(() => {
-fetch("/api")
+fetch("https://api.jsonserve.com/Uw5CrX")
     .then((response) => response.json())
 
     .then((res) => {
@@ -74,6 +73,7 @@ return (
     {error && <p className="text-center text-red-500">Error: {error&&'error loading quiz'}</p>}
 
     <CelebrationConfetti
+
      feedback={feedback}
      currentQuestion={currentQuestion}
      numberOfQuestions={questions.length-1}
